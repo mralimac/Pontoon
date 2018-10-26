@@ -13,28 +13,25 @@ public class Main
 		Game game = new Game();
 		game.generateDeck();
 		game.getPlayersGuess();
-		if(game.askIfPlayerDraw())
+		while(game.askIfPlayerDraw())
 		{
 			game.drawNewCard();
 			
 		}
-		else
+		
+		if(game.isBusted())
 		{
-			if(game.isBusted())
-			{
-				System.out.println("Game is busted");
-			}
+			System.out.println("Game is busted");
+		}
 			
-			if(game.checkIfHouseWon(housePlayer.getHousesGuess()))
-			{
-				System.out.println("House has guessed correctly");
-			}
+		if(game.checkIfHouseWon(housePlayer.getHousesGuess()))
+		{
+			System.out.println("House has guessed correctly");
+		}
 			
-			if(!game.checkIfHouseWon(housePlayer.getHousesGuess()) && game.gameWin())
-			{
-				System.out.println("The player has won!");
-			}
-				
+		if(!game.checkIfHouseWon(housePlayer.getHousesGuess()) && game.gameWin())
+		{
+			System.out.println("The player has won!");
 		}
 	}
 	
